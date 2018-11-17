@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Tic Tac Toe Game</title>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='description' content='A simple game, written in simple javascript.'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <meta name='mobile-web-app-capable' content='yes'>
+    <meta name='apple-mobile-web-app-capable' content='yes'>
+    <meta name='application-name' content='Tic Tac Toe Game'>
+    <meta name='apple-mobile-web-app-status-bar-style' content='black'>
+    <meta name='apple-mobile-web-app-title' content='Tic Tac Toe Game'>
+    <link rel='icon' sizes='192x192' href='/images/touch/logo_192.png'>
+    <link rel='apple-touch-icon' href='/images/touch/logo_192.png'>
+    <meta name='msapplication-TileImage' content='/images/touch/logo_144.png'>
+    <meta name='msapplication-TileColor' content='#2196F3'>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/game.js"></script>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <section class="container mt-5">
+            <div class="col-md-6 offset-md-3">
+                <div class="text-center mb-4">
+                    <img class="mb-4" src="images/logo.png" alt="" width="72" height="72">
+                    <h1 class="h3 mb-3 font-weight-normal">Tic Tac Toe</h1>
+                    <p>A simple game, written in simple javascript</p>
+                </div>
+            </div>
+        </section>
+        <section class="container mt-5" id="registerView">
+            <div class="col-md-6 offset-md-3">
+                <div class="form-group col-lg-12">
+                    <label for="Player1Name">Player One's Name</label>
+                    <input type="text" name="" class="form-control" id="Player1Name" value="">
+                </div>
+                <div class="form-group col-lg-12">
+                    <label for="Player2Name">Player Two's Name</label>
+                    <input type="text" name="" class="form-control" id="Player2Name" value="">
+                </div>
+                <div class="form-group col-lg-12">
+                    <button id="btnStart" class="btn btn-lg btn-block btn-primary">Play</button>
+                </div>
+            </div>
+        </section>
+        <section id="gameView" class="container mt-1">
+            <div class="col-md-6 offset-md-3">
+                <h2 class="text-center h4"><span class="player1Name"></span> (X) Vs <span class="player2Name"></span> (O)</h2>
+                <h5 class="card-title font-weight-normal p-1 mt-1 h6"><span class='currentPlayer'></span>'s turn</h5>
+                <div id="game-status"></div>
+                <div id="board">
+                    <div>
+                        <input type="checkbox" value=1 id="index1" /><label for="index1"></label>
+                        <input type="checkbox" value=2 id="index2" /><label for="index2"></label>
+                        <input type="checkbox" value=3 id="index3" /><label for="index3"></label>
+                    </div>
+                    <div>
+                        <input type="checkbox" value=4 id="index4" /><label for="index4"></label>
+                        <input type="checkbox" value=5 id="index5" /><label for="index5"></label>
+                        <input type="checkbox" value=6 id="index6" /><label for="index6"></label>
+                    </div>
+                    <div>
+                        <input type="checkbox" value=7 id="index7" /><label for="index7"></label>
+                        <input type="checkbox" value=8 id="index8" /><label for="index8"></label>
+                        <input type="checkbox" value=9 id="index9" /><label for="index9"></label>
+                    </div>
+                </div>
+                <div class="action-footer">
+                    <a href="#" class="card-link" id="btnRestart">Exit</a>
+                    <a href="#" class="card-link btnNewGame">New Game</a>
+                </div>
+
+            </div>
+
+        </section>
+        <section class="container mt-5" id='scoreboard'>
+            <div class="text-left mb-4">
+                <h1 class="h3 font-weight-normal">Top PLayers</h1>
+            </div>
+            <ul class="list-group list-group-flush">
+            </ul>
+        </section>
+    </div>
+    <template id='win-game-message'>
+        <div class="alert alert-success hide" role="alert">
+            Congratulations {{playerName}}. You win the game!!!<br /> Start
+            <a class="btnNewGame font-weight-bold" href="#">new game</a>
+        </div>
+    </template>
+    <template id='draw-game-message'>
+        <div class="alert alert-warning hide" role="alert">
+            The game is draw. <br/> Start
+            <a class="btnNewGame font-weight-bold" href="#">new game</a>
+        </div>
+    </template>
+    <script>
+        gameController.init();        
+    </script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js', { scope: '/' })
+                .then(function (registration) {
+                    console.log('Service Worker Registered');
+                });
+
+            navigator.serviceWorker.ready.then(function (registration) {
+                console.log('Service Worker Ready');
+            });
+        }
+    </script>
+</body>
+
+</html>
