@@ -93,7 +93,7 @@ const gameController = {
             }
         }
         if(is_complete){
-            this.saveWinningMoves(points);
+            this.saveWinningMoves(winningMoves);
         }
         return is_complete;
     },
@@ -301,6 +301,7 @@ const gameView = {
         this.inputs.forEach(element => {
             element.removeAttribute("disabled");
             element.nextSibling.textContent = "";
+            element.nextSibling.classList.remove("wining-position");
         });
         this.gameStatusDisplayUpdate();
 
